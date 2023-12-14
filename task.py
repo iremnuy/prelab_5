@@ -64,9 +64,9 @@ for k in range(Channel):
             index += 1
 
 # Save the result arrays to respective CSV files
-numpy.savetxt("result_red.csv", result[:, :, 0], delimiter=",")
-numpy.savetxt("result_blue.csv", result[:, :, 1], delimiter=",")
-numpy.savetxt("result_green.csv", result[:, :, 2], delimiter=",")
+#numpy.savetxt("result_red.csv", result[:, :, 0], delimiter=",")
+#numpy.savetxt("result_blue.csv", result[:, :, 1], delimiter=",")
+#numpy.savetxt("result_green.csv", result[:, :, 2], delimiter=",")
 
 print(result[5,10,2])
 
