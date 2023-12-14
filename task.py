@@ -2,7 +2,7 @@ import cache_module
 import numpy
 
 # Prepare an RGB image containing 3 colour channels.
-ROW = 512
+ROW = 256
 COL = 512
 Channel = 3
 image = numpy.random.randint(0, 256, size=(ROW, COL, Channel), 
@@ -33,11 +33,11 @@ cm = cache_module.cache_module(l1, l2, l3, m)
 
 index = 0
 
-# 1. Load the image into the memory
+ #1. Load the image into the memory
 for k in range(Channel):
     for j in range(ROW):
         for i in range(COL):
-            value = image[i, j, k] & 0xFF
+            value = image[j, i, k] & 0xFF  # Corrected indices
             cm.write(index, value)
             index += 1
 
@@ -60,7 +60,7 @@ index = 0
 for k in range(Channel):
     for j in range(ROW):
         for i in range(COL):
-            result[i, j, k] = cm.read(index) & 0xFFFFFFFFFFFFFFFF
+            result[j, i, k] = cm.read(index) & 0xFFFFFFFFFFFFFFFF
             index += 1
 
 # Save the result arrays to respective CSV files
