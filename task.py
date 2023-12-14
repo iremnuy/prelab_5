@@ -2,8 +2,8 @@ import cache_module
 import numpy
 
 # Prepare an RGB image containing 3 colour channels.
-ROW = 256
-COL = 512
+ROW = 1024
+COL = 2048
 Channel = 3
 image = numpy.random.randint(0, 256, size=(ROW, COL, Channel), 
 dtype=numpy.int64)
@@ -52,7 +52,7 @@ for k in range(Channel):
             for m in range(mask_size):
                 for n in range(mask_size):
                     if 0 <= i - 1 + m < ROW and 0 <= j - 1 + n < COL:
-                        result_value += cm.read(index + (i - 1 + m) * COL + (j - 1 + n)) * mask[m, n]
+                        result_value += cm.read(index + (j - 1 + m) * COL + (i - 1 + n)) * mask[m, n]
             cm.write(index + i * COL + j, result_value & 0xFF)
 
 # 3. Load the result image from memory
